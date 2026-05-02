@@ -35,8 +35,8 @@ if file2 and file3 :
   st.write('النتيجة النهائية')
   st.dataframe(df_F.head())
 
-  st.download_button(label='تحميل الملف القابل للنسخ ')
-  data = df_F.to_excel('Ready_to_Copy.xlsx', index=False, header=False)
+#  st.download_button(label='تحميل الملف القابل للنسخ ')
+#  data = df_F.to_excel('Ready_to_Copy.xlsx', index=False, header=False)
 
   buffer = io.BytesIO()
   with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
