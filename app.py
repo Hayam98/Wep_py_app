@@ -20,7 +20,7 @@ if file2 and file3 :
 
   rows_count = len(merged_data)
   df_F = pd.DataFrame(columns = df.columns , index= range(rows_count))
-  
+
   df_F.iloc[:rows_count,0] = merged_data.iloc[:,0].values
   df_F.iloc[:rows_count,1]= 'Speciality Clinics'
   df_F.iloc[:rows_count,2] = merged_data.iloc[:,4].values
@@ -38,6 +38,13 @@ if file2 and file3 :
   st.download_button(label='تحميل الملف القابل للنسخ ')
   data = df_F.to_excel('Ready_to_Copy.xlsx', index=False, header=False)
 
-
-
-
+  buffer = io.BytesIO()
+  with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+    df_F.to_excel(writer, index=False, sheet_name='Sheet1')
+    
+    st.download_button(
+        label="Download Excel File",
+        data=buffer.getvalue(),
+        file_name='Final_Report.xlsx',
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
