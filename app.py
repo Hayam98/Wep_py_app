@@ -41,10 +41,12 @@ if file2 and file3 :
   buffer = io.BytesIO()
   with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
     df_F.to_excel(writer, index=False, sheet_name='Sheet1')
-    
-    st.download_button(
-        label="Download Excel File",
-        data=buffer.getvalue(),
-        file_name='Final_Report.xlsx',
-        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  
+  buffer.seek(0)
+
+  st.download_button(
+    label="Download Excel File",
+    data=buffer.getvalue(),
+    file_name='Final_Report.xlsx',
+    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
