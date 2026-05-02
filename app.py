@@ -3,11 +3,11 @@ import requests
 import io
 from openpyxl import load_workbook
 import streamlit as st # pip install streamlit
-st.write('## Merg and fill Datasheet')
+st.write('# Merg and fill Datasheet')
 df = pd.read_excel('DAN_Empty.xlsx')
 
-file2 = st.file_uploader('# Upload Book file ', type='xlsx')
-file3 = st.file_uploader('# Upload Clinics type file', type = 'xlsx')
+file2 = st.file_uploader('Upload Book file ', type='xlsx')
+file3 = st.file_uploader('Upload Clinics type file', type = 'xlsx')
 
 if file2 and file3 :
   book = pd.read_excel(file2)
